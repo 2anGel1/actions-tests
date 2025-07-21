@@ -36,4 +36,4 @@ jobs:
           host: vmi1919370.contaboserver.net
           username: root
           password: 11022209Prod
-          script: whoami
+          script: whoami && ls
