@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.MS_HOSTNAME }}
           username: ${{ secrets.TS_USERNAME }}
           password: ${{ secrets.TS_PASSWORD }}
-          script: cd admin-savci && git pull origin main
+          script: cd admin-savci && ls
 
       # - name: SSH Connection main server for running build
       #   uses: appleboy/ssh-action@v1
