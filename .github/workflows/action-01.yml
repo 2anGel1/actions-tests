@@ -36,4 +36,4 @@ jobs:
           host: ${{ secrets.MS_HOSTNAME }}
           username: ${{ secrets.MS_USERNAME }}
           password: ${{ secrets.MS_PASSWORD }}
-          script: ./deploy-saveci.sh
+          script: ./deploy-savci.sh
