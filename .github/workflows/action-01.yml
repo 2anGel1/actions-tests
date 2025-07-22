@@ -25,15 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
-      - name: SSH Connection attempt
+      - name: SSH Connection tiers server for git pulling
         uses: appleboy/ssh-action@v1
         with:
-          host: vmi1919370.contaboserver.net
-          username: root
-          password: 11022209Prod
-          script: whoami && ls
+          host: ${{ secrets.TIERS_SERVER_HOST }}
+          username: ${{ secrets.TIERS_SERVER_UNAME }}
+          password: ${{ secrets.TIERS_SERVER_PASSWORD }}
+          script: cd admin-savci && git pull origin main
+
+      - name: SSH Connection main server for running build
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.MAIN_SERVER_HOST }}
+          username: ${{ secrets.MAIN_SERVER_UNAME }}
+          password: ${{ secrets.MAIN_SERVER_PASSWORD }}
+          script: ./deploy-finer.sh
