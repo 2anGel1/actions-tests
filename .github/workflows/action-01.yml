@@ -26,18 +26,22 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a set of commands using the runners shell
-      - name: SSH Connection tiers server for git pulling
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.TIERS_SERVER_HOST }}
-          username: ${{ secrets.TIERS_SERVER_UNAME }}
-          password: ${{ secrets.TIERS_SERVER_PASSWORD }}
-          script: cd admin-savci && git pull origin main
+      - name: Tiers Server Host
+        run: echo ${{ secrets.TIERS_SERVER_HOST }}
 
-      - name: SSH Connection main server for running build
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.MAIN_SERVER_HOST }}
-          username: ${{ secrets.MAIN_SERVER_UNAME }}
-          password: ${{ secrets.MAIN_SERVER_PASSWORD }}
-          script: ./deploy-finer.sh
+      - name: Tiers Server Username
+        run: echo ${{ secrets.TIERS_SERVER_UNAME }}
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.TIERS_SERVER_HOST }}
+      #     username: ${{ secrets.TIERS_SERVER_UNAME }}
+      #     password: ${{ secrets.TIERS_SERVER_PASSWORD }}
+      #     script: cd admin-savci && git pull origin main
+
+      # - name: SSH Connection main server for running build
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.MAIN_SERVER_HOST }}
+      #     username: ${{ secrets.MAIN_SERVER_UNAME }}
+      #     password: ${{ secrets.MAIN_SERVER_PASSWORD }}
+      #     script: ./deploy-finer.sh
