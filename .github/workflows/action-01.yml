@@ -28,7 +28,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Tiers Server Host
         env:
-          TIERS_SERVER_HOST: ${{ secrets.TS_HOSTNAME }}
+          TIERS_SERVER_HOST: ${{ secrets.MS_HOSTNAME }}
           TIERS_SERVER_UNAME: ${{ secrets.TS_USERNAME }}
           TIERS_SERVER_PASSWORD: ${{ secrets.TS_PASSWORD }}
         run: echo $TIERS_SERVER_HOST
