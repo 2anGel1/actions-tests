@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,10 +27,14 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Tiers Server Host
-        run: echo ${{ secrets.TIERS_SERVER_HOST }}
+        env:
+          TIERS_SERVER_HOST: ${{ secrets.TS_HOSTNAME }}
+          TIERS_SERVER_UNAME: ${{ secrets.TS_USERNAME }}
+          TIERS_SERVER_PASSWORD: ${{ secrets.TS_PASSWORD }}
+        run: echo $TIERS_SERVER_HOST
 
-      - name: Tiers Server Username
-        run: echo ${{ secrets.TIERS_SERVER_UNAME }}
+      # - name: Tiers Server Username
+      #   run: echo ${{ secrets.TIERS_SERVER_UNAME }}
       #   uses: appleboy/ssh-action@v1
       #   with:
       #     host: ${{ secrets.TIERS_SERVER_HOST }}
